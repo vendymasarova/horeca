@@ -2,5 +2,11 @@ name: horeca
 title: horeca
 category: business
 widgets:
-  - size: 1x1 # choose size of the widget on the home hub
-    jigId: myfirstjig
+  - size: 2x2 # choose size of the widget on the home hub
+    jigId: search
+  - size: 2x4 # choose size of the widget on the home hub
+    jigId: new-customer
+  - size: 2x2 # choose size of the widget on the home hub
+    jigId: application
+  - size: 2x4 # choose size of the widget on the home hub
+    jigId: synchronization
