@@ -1,21 +1,116 @@
 title: Search
 description: Search customer
-type: jig.default
+type: jig.list
 icon: search
+isSearchable: true
 
-header:
-  type: component.jig-header
-  options:
-    height: medium
-    children:
-      type: component.image
-      options:
-        source:
-          uri: https://builder.jigx.com/assets/images/header.jpg
-
-children:
-  - type: component.image
+datasources:
+  customers:
+    type: datasource.static
     options:
-      source:
-        uri: https://images.unsplash.com/photo-1704217394124-76efafcbc78d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-        
+      data:
+      - id: 1
+        name: John Doe
+        entityTypeCode: Payer
+        Street: 123 Main Street
+        City: Exampleville
+        CountryCode: US
+        StatusCode: Potentional
+        IdentificationNumber: ABC123
+        SynchronizationStatus: synchronized
+        avatar: https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      - id: 2
+        name: Jane Smith
+        entityTypeCode: Payer
+        Street: 456 Oak Avenue
+        City: AnotherCity
+        CountryCode: CA
+        StatusCode: Core
+        IdentificationNumber: XYZ789
+        SynchronizationStatus: not synchronized
+        avatar: https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      - id: 3
+        name: Bob Johnson
+        entityTypeCode: Payer
+        Street: 789 Pine Road
+        City: YetAnotherCity
+        CountryCode: AU
+        StatusCode: Potentional
+        IdentificationNumber: DEF456
+        SynchronizationStatus: synchronized
+        avatar: https://example.com/avatar3.jpg
+      - id: 4
+        name: Emily Brown
+        entityTypeCode: Payer
+        Street: 101 Cedar Lane
+        City: NewTown
+        CountryCode: GB
+        StatusCode: Core
+        IdentificationNumber: GHI789
+        SynchronizationStatus: not synchronized
+        avatar: https://example.com/avatar4.jpg
+      - id: 5
+        name: Michael White
+        entityTypeCode: Payer
+        Street: 222 Willow Street
+        City: SomeVillage
+        CountryCode: FR
+        StatusCode: Potentional
+        IdentificationNumber: JKL012
+        SynchronizationStatus: synchronized
+        avatar: https://example.com/avatar5.jpg
+      - id: 6
+        name: Sarah Davis
+        entityTypeCode: Payer
+        Street: 333 Elm Avenue
+        City: RandomCity
+        CountryCode: DE
+        StatusCode: Core
+        IdentificationNumber: MNO345
+        SynchronizationStatus: not synchronized
+        avatar: https://example.com/avatar6.jpg
+      - id: 7
+        name: Alex Wilson
+        entityTypeCode: Payer
+        Street: 444 Birch Road
+        City: Anytown
+        CountryCode: ES
+        StatusCode: Potentional
+        IdentificationNumber: PQR678
+        SynchronizationStatus: synchronized
+        avatar: https://example.com/avatar7.jpg
+      
+
+    
+data: =$filter(@ctx.datasources.customers, function($v){$contains($string($v.name),$string(@ctx.jig.state.searchText != null ? @ctx.jig.state.searchText:''))})[]
+item:
+  type: component.list-item
+  options:
+    title: =@ctx.current.item.name
+    subtitle: ='entityCode:' & ' ' & @ctx.current.item.entityTypeCode
+    isContained: true
+    swipeable:
+      right:
+        - label: Edit customer
+          icon: pencil-2
+          color: primary
+          onPress: 
+            type: action.go-to
+            options:
+              linkTo: edit-customer
+    leftElement: 
+      element: avatar
+      text: =@ctx.current.item.name
+      uri: =@ctx.current.item.avatar
+    label:
+      title: =@ctx.current.item.StatusCode
+      color:
+        - when: =@ctx.current.item.StatusCode
+          color: =@ctx.current.item.StatusCode = 'Potentional' ? 'color3':'positive'
+    value: =@ctx.current.item.entityTypeCode
+    onPress: 
+      type: action.go-to
+      options:
+        linkTo: customer-detail
+        parameters:
+          customer_id: =@ctx.current.item.id

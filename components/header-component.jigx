@@ -1,0 +1,42 @@
+type: component.default
+children:
+  - type: component.view
+    options:
+      style:
+        flex:
+          direction: row
+        gap: small
+        alignItems: center 
+      onPress: 
+        type: action.go-to
+        options:
+          linkTo: user-profile
+      children:
+        # Avatar
+        - type: component.avatar
+          options:
+            title: =@ctx.inputs.name
+            uri: =@ctx.inputs.avatar
+            size: small
+        # Text
+        - type: component.view
+          options:
+            style:
+              flex: 
+                grow: 1
+            children:
+              - type: component.text
+                options:
+                  value: ="Good morning" & ", " & @ctx.inputs.name
+                  weight: semi-bold
+                  size: medium
+              # - type: component.view
+              #   options:
+              #     style:
+              #       justifyContent: center
+              #     children:
+              #       - type: component.text
+              #         options:
+              #           value: ="It's" & ' ' & @ctx.inputs.date
+              #           size: small 
+              #           emphasis: high

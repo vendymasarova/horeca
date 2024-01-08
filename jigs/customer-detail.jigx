@@ -1,0 +1,155 @@
+title: ' '
+type: jig.default
+
+header:
+  type: component.jig-header
+  options:
+    height: small
+    children:
+      type: component.image
+      options:
+        source:
+          uri: https://t14345253.p.clickup-attachments.com/t14345253/453a4bad-d1a1-4928-afe8-154836671f1a/new-customers.png?view=open
+          
+actions:
+  - children:
+      - type: action.go-to
+        options:
+          title: Edit user data
+          linkTo: edit-customer
+          parameters:
+            userId: =@ctx.datasources.customer.id
+        
+datasources:
+  customer: 
+    type: datasource.static
+    options:
+      data:
+        - id: 2
+          name: Jane Smith
+          entityTypeCode: Payer
+          Street: 456 Oak Avenue
+          City: AnotherCity
+          CountryCode: CA
+          StatusCode: Potentional
+          IdentificationNumber: XYZ789
+          SynchronizationStatus: not synchronized
+          avatar: https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+
+  contacts:
+    type: datasource.static
+    options:
+      data:
+      - id: 1
+        full_name: John Doe
+        telephone: +1234567890
+      - id: 2
+        full_name: Jane Smith
+        telephone: +9876543210
+      - id: 3
+        full_name: Bob Johnson
+        telephone: +1122334455
+        
+children:
+  - type: component.avatar
+    options:
+      title: =$substring(@ctx.datasources.customer.name
+      uri: =@ctx.datasources.customer.avatar
+      size: large
+      align: center
+  - type: component.entity
+    options:
+      isCompact: true
+      children:
+        - type: component.entity-field
+          options:
+            label: Name
+            value: =@ctx.datasources.customer.name
+        - type: component.entity-field
+          options:
+            label: entity Type Code
+            value: =@ctx.datasources.customer.entityTypeCode
+        - type: component.entity-field
+          options:
+            label: Status Code
+            value: =@ctx.datasources.customer.StatusCode
+        - type: component.entity-field
+          options:
+            label: Identification Number
+            value: =@ctx.datasources.customer.IdentificationNumber
+  - type: component.expander
+    options:
+      header:
+        centerElement: 
+          type: component.titles
+          options:
+            title: Address
+            icon: location
+            iconColor: color9
+            align: left
+      children:
+        - type: component.location
+          options:
+            address: 458 Oak Ln, Aspen, CO 81611, USA
+            zoomLevel: 14
+        - type: component.entity
+          options:
+            children:
+              - type: component.entity-field
+                options:
+                  label: Street
+                  value: =@ctx.datasources.customer.Street
+              - type: component.entity-field
+                options:
+                  label: City
+                  value: =@ctx.datasources.customer.City
+              - type: component.entity-field
+                options:
+                  label: Country
+                  value: =@ctx.datasources.customer.CountryCode
+      isInitiallyCollapsed: false
+  
+  - type: component.custom-component
+    componentId: title
+    inputs:
+      title: Contacts
+  
+  - type: component.list
+    options:
+      data: =@ctx.datasources.contacts
+      maximumItemsToRender: 8
+      item: 
+        type: component.list-item
+        options:
+          title: =@ctx.current.item.full_name
+          subtitle: ='+' & @ctx.current.item.telephone
+          leftElement: 
+            element: avatar
+            text: =@ctx.current.item.full_name
+            uri: =@ctx.current.item.full_name
+          rightElement: 
+            element: icon
+            icon: phone
+            isContained: true
+            onPress: 
+              type: action.open-url
+              options:
+                url: ='tel:' & @ctx.current.item.telephone
+            
+          isContained: true
+          swipeable:
+            right:
+              - label: Edit contact
+                icon: pencil-2
+                color: primary
+                onPress: 
+                  type: action.go-to
+                  options:
+                    linkTo: edit-contact
+          onPress: 
+            type: action.go-to
+            options:
+              linkTo: contact-detail
+        
+      
+

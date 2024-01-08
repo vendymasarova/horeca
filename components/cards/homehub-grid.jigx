@@ -1,0 +1,305 @@
+type: component.default
+children:
+  - type: component.view
+    options:
+      style:
+        flex: 
+          grow: 1
+          basis: 1
+          direction: row
+        gap: small
+      children:
+        - type: component.view
+          options:
+            style:
+              flex:
+                grow: 1
+                shrink: 1
+                basis: 1
+              gap: small
+            children:
+              - type: component.view
+                options:
+                  style:
+                    flex: 
+                      grow: 1
+                      shrink: 1
+                      basis: 1
+                    height: 
+                      max: 100
+                  children:
+                    - type: component.card
+                      options:
+                        onPress: 
+                          type: action.go-to
+                          options:
+                            linkTo: search
+                        children:
+                          - type: component.view
+                            options:
+                              style:
+                                justifyContent: center
+                                alignItems: center
+                                gap: large
+                              children:
+                                - type: component.view
+                                  options:
+                                    style:
+                                      justifyContent: center
+                                      alignItems: center
+                                      width: 24
+                                      height: 24
+                                    children:
+                                      - type: component.icon
+                                        options:
+                                          icon: search-1
+                                          shape: circle
+                                          type: duotone
+                                          color: color2
+                                - type: component.text
+                                  options:
+                                    value: Search customers
+                                    emphasis: high
+                                    align: center
+                                    size: regular
+                                    weight: semi-bold
+              - type: component.view
+                options:
+                  style:
+                    flex: 
+                      grow: 1
+                      shrink: 1
+                      basis: 1
+                    height: 
+                      min: 250
+                  children:
+                    - type: component.card
+                      options:
+                        onPress: 
+                          type: action.go-to
+                          options:
+                            linkTo: synchronization
+                        children:
+                          - type: component.view
+                            options:
+                              style:
+                                justifyContent: space-between
+                              children:
+                                - type: component.view
+                                  options:
+                                    style:
+                                      justifyContent: center
+                                      alignItems: center
+                                      gap: large
+                                    children:
+                                      - type: component.view
+                                        options:
+                                          style:
+                                            justifyContent: center
+                                            alignItems: center
+                                            width: 24
+                                            height: 24
+                                          children:
+                                            - type: component.icon
+                                              options:
+                                                icon: synchronize-arrows-1
+                                                shape: circle
+                                                type: duotone
+                                                color: color2
+                                      - type: component.text
+                                        options:
+                                          value: Synchronization
+                                          emphasis: high
+                                          align: center
+                                          size: regular
+                                          weight: semi-bold
+                                - type: component.view
+                                  options:
+                                    style:
+                                      gap: small
+                                    children:
+                                      - type: component.view
+                                        options:
+                                          style:
+                                            flex:
+                                              direction: row
+                                            justifyContent: space-between
+                                          children:
+                                            - type: component.view
+                                              options:
+                                                style:
+                                                  flex:
+                                                    direction: row
+                                                  alignItems: center
+                                                  gap: medium
+                                                children:
+                                                  - type: component.icon
+                                                    options:
+                                                      icon: person
+                                                      color: color2
+                                                  - type: component.text
+                                                    options:
+                                                      value: 20
+                                            - type: component.icon
+                                              options:
+                                                icon: cloud-smartphone-upload
+                                                color: color2
+                                      - type: component.view
+                                        options:
+                                          style:
+                                            flex:
+                                              direction: row
+                                            justifyContent: space-between
+                                          children:
+                                            - type: component.view
+                                              options:
+                                                style:
+                                                  flex:
+                                                    direction: row
+                                                  alignItems: center
+                                                  gap: medium
+                                                children:
+                                                  - type: component.icon
+                                                    options:
+                                                      icon: person
+                                                      color: color2
+                                                  - type: component.text
+                                                    options:
+                                                      value: 124
+                                            - type: component.icon
+                                              options:
+                                                icon: cloud-smartphone-download
+                                                color: color2
+                                - type: component.view
+                                  options:
+                                    style: {}
+                                    children:
+                                      - type: component.text
+                                        options:
+                                          value: Last update
+                                          size: tiny
+                                          weight: regular
+                                      - type: component.text
+                                        options:
+                                          value: 4. 1. 2024 17:04
+                                          size: tiny
+                                          emphasis: high
+                                          weight: regular
+                                    
+        - type: component.view
+          options:
+            style:
+              flex: 
+                grow: 1
+                shrink: 1
+                basis: 1
+              gap: small
+            children:
+              - type: component.view
+                options:
+                  style:
+                    flex: 
+                      grow: 1
+                      shrink: 1
+                      basis: 1
+                    height:
+                      min: 250
+                  children:
+                    - type: component.card
+                      options:
+                        onPress: 
+                          type: action.go-to
+                          options:
+                            linkTo: new-customer
+                        children:
+                          - type: component.view
+                            options:
+                              style:
+                                flex: 
+                                  grow: 1
+                                position: absolute
+                                left: none
+                                right: none
+                                bottom: none
+                                top: none
+                              children:
+                                - type: component.image
+                                  options:
+                                    resizeMode: cover
+                                    size: 
+                                      height: 250
+                                    source:
+                                      uri: https://t14345253.p.clickup-attachments.com/t14345253/453a4bad-d1a1-4928-afe8-154836671f1a/new-customers.png?view=open
+                          - type: component.view
+                            options:
+                              style:
+                                justifyContent: center
+                                alignItems: center
+                                gap: large
+                              children:
+                                - type: component.view
+                                  options:
+                                    style:
+                                      justifyContent: center
+                                      alignItems: center
+                                      width: 24
+                                      height: 24
+                                    children:
+                                      - type: component.icon
+                                        options:
+                                          icon: plus
+                                          shape: circle
+                                          type: duotone
+                                          color: color2
+                                - type: component.text
+                                  options:
+                                    value: New customer
+                                    emphasis: high
+                                    align: center
+                                    size: regular
+                                    weight: semi-bold
+              - type: component.view
+                options:
+                  style:
+                    flex: 
+                      grow: 1
+                      shrink: 1
+                      basis: 1
+                    height:
+                      max: 100
+                  children:
+                    - type: component.card
+                      options:
+                        onPress: 
+                          type: action.go-to
+                          options:
+                            linkTo: application
+                        children:
+                          - type: component.view
+                            options:
+                              style:
+                                justifyContent: center
+                                alignItems: center
+                                gap: large
+                              children:
+                                - type: component.view
+                                  options:
+                                    style:
+                                      justifyContent: center
+                                      alignItems: center
+                                      width: 24
+                                      height: 24
+                                    children:
+                                      - type: component.icon
+                                        options:
+                                          icon: app-window-link
+                                          shape: circle
+                                          type: duotone
+                                          color: color2
+                                - type: component.text
+                                  options:
+                                    value: HORECA App
+                                    emphasis: high
+                                    align: center
+                                    size: regular
+                                    weight: semi-bold

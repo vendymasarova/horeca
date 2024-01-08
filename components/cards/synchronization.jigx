@@ -1,0 +1,69 @@
+type: component.default
+children: 
+  - type: component.card
+    options:
+      children:
+        - type: component.view
+          options:
+            style:
+              flex:
+                direction: row
+            children:
+              - type: component.view
+                options:
+                  style:
+                    flex: 
+                      grow: 1
+                      basis: 1
+                      shrink: 1
+                  children:
+                    - type: component.view
+                      options:
+                        style:
+                          flex:
+                            direction: row
+                          gap: small
+                        children:
+                          - type: component.icon
+                            options:
+                              icon: cloud-smartphone-download
+                          - type: component.text
+                            options:
+                              value: From the server
+                    - type: component.text
+                      options:
+                        value: 20
+                    - type: component.text
+                      options:
+                        value: customers
+                        size: tiny
+              - type: component.view
+                options:
+                  style:
+                    flex: 
+                      grow: 1
+                      basis: 1
+                      shrink: 1
+                  children:
+                    - type: component.pie-chart
+                      options:
+                        chart:
+                          title:
+                            text: 120 MB
+                            verticalAlign: center
+                          isAnimated: true
+                          # width: 125
+                          # height: 115
+                        series:
+                          - data: =[{"y":20, "color":"color4"}, {"y":80, "color":"color3"}]
+                            layout: pie
+                    - type: component.text
+                      options:
+                        value: Last update
+                        size: small
+                    - type: component.text
+                      options:
+                        value: Today at 8:52 am
+                        size: small
+                        emphasis: high
+                        

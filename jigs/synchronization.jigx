@@ -1,21 +1,46 @@
-title: Sync
+title: Synchronization
 description: Search customer
 type: jig.default
 icon: synchronize-arrow
 
-header:
-  type: component.jig-header
-  options:
-    height: medium
-    children:
-      type: component.image
-      options:
-        source:
-          uri: https://builder.jigx.com/assets/images/header.jpg
+actions:
+  - children:
+      - type: action.set-state
+        options:
+          title: Start Synchronization
+          state: =@ctx.solution.state.syncStatus
+          value: true
 
 children:
-  - type: component.image
+  - type: component.custom-component
+    componentId: synchronization
+    
+widgets:
+  "2x4": 
+    type: widget.group
     options:
-      source:
-        uri: https://images.unsplash.com/photo-1704217394124-76efafcbc78d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-        
+      children:
+
+       - type: widget.value
+         options:
+           value: 20
+           top: 
+             type: component.titles
+             options:
+              icon: synchronize-arrows-1
+              title: Synchronization
+           bottom: 
+             type: component.titles
+             options:
+               icon: cloud-smartphone-download
+               iconColor: color2
+               subtitle: from the server
+       - type: widget.value
+         options:
+           value: 20
+           bottom: 
+             type: component.titles
+             options:
+               icon: cloud-smartphone-download
+               iconColor: color3
+               subtitle: to the server

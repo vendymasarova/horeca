@@ -1,0 +1,73 @@
+title: =@ctx.datasources.contacts.full_name
+description: Detailed contact information
+type: jig.default
+
+header:
+  type: component.jig-header
+  options:
+    height: medium
+    children:
+      type: component.image
+      options:
+        source:
+          uri: https://builder.jigx.com/assets/images/header.jpg
+
+datasources:
+  contacts:
+    type: datasource.static
+    options:
+      data:
+      - id: 1
+        customer-id: 123
+        full_name: John Doe
+        department: 0003
+        telephone: +1234567890
+        contactFunction: 11
+        morningFrom: 10:00
+        morningTo: 12:00
+        afternoonFrom: 15:00
+        afternoonTo: 17:00
+
+children:
+  - type: component.avatar
+    options:
+      title: =@ctx.datasources.contacts.full_name
+      uri: =@ctx.datasources.contacts.full_name
+      size: large
+      align: center
+  - type: component.entity
+    options:
+      isCompact: true
+      children:
+        - type: component.entity-field
+          options:
+            label: Name
+            value: =@ctx.datasources.contacts.full_name
+        - type: component.entity-field
+          options:
+            label: Customer ID
+            value: =@ctx.datasources.contacts.customer-id
+        - type: component.entity-field
+          options:
+            label: Department
+            value: =@ctx.datasources.contacts.department
+        - type: component.entity-field
+          options:
+            label: Contact Function
+            value: =@ctx.datasources.contacts.contactFunction
+        - type: component.entity-field
+          options:
+            label: Morning from
+            value: =@ctx.datasources.contacts.morningFrom
+        - type: component.entity-field
+          options:
+            label: Morning to
+            value: =@ctx.datasources.contacts.morningTo
+        - type: component.entity-field
+          options:
+            label: Afternoon from
+            value: =@ctx.datasources.contacts.afternoonFrom
+        - type: component.entity-field
+          options:
+            label: Afternoon to
+            value: =@ctx.datasources.contacts.afternoonTo

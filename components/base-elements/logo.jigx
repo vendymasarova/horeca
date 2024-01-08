@@ -1,0 +1,21 @@
+type: component.default
+children:
+  - type: component.view
+    options:
+      style:
+        flex:
+          grow: 1
+          basis: 1
+        alignContent: center
+        alignItems: center
+        justifyContent: center
+      children:
+        - type: component.image
+          options:
+            size: 
+              height: 52
+              width: 196
+            resizeMode: contain
+            source:
+              uri: https://t14345253.p.clickup-attachments.com/t14345253/e4efd9db-2de6-4207-a6e0-fa46ced5712d/HORECA_JIGX_logo-mattoni1873%5B81%5D%201.png?view=open
+                    

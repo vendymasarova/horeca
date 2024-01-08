@@ -1,7 +1,7 @@
 title: Nintex K2 HORECA App
 description: Search customer
 type: jig.default
-icon: share-external-link-1
+icon: app-window-link
 
 header:
   type: component.jig-header

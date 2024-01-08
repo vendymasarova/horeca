@@ -1,0 +1,44 @@
+type: component.default
+children:
+  - type: component.view
+    options:
+      style:
+        flex: 
+          direction: row
+          grow: 1
+        alignContent: space-between
+        justifyContent: space-between
+        alignItems: center
+        margin: 
+          top: medium 
+      children:   
+        - type: component.view
+          options:
+            style:
+              gap: minimal
+            children:
+              - type: component.text
+                options:
+                  size: =@ctx.inputs.size = 'regular' ? 'regular':'medium'
+                  weight: regular
+                  value: =@ctx.inputs.title
+              - type: component.text
+                when: =@ctx.inputs.subtitle != null
+                options:
+                  value: =@ctx.inputs.subtitle
+                  size: small
+                  emphasis: high
+        - type: component.icon
+          when: =@ctx.inputs.link != null
+          options:
+            icon: =@ctx.inputs.icon 
+            color: color9
+            shape: circle
+            type: duotone
+            size: small
+            onPress: 
+              type: action.go-to
+              options:
+                linkTo: =@ctx.inputs.link
+                parameters:
+                  email: =@ctx.inputs.email
