@@ -1,0 +1,121 @@
+title: Edit contact
+type: jig.default
+
+header:
+  type: component.jig-header
+  options:
+    height: small
+    children:
+      type: component.image
+      options:
+        source:
+          uri: https://t14345253.p.clickup-attachments.com/t14345253/a6c54f12-b0d7-426c-a06a-585cdac41274/contacts.png?view=open
+
+datasources:
+  contacts:
+    type: datasource.static
+    options:
+      data:
+      - id: 1
+        customer-id: 123
+        full_name: John Doe
+        department: 0003
+        telephone: +1234567890
+        contactFunction: 11
+        morningFrom: 10:00
+        morningTo: 12:00
+        afternoonFrom: 15:00
+        afternoonTo: 17:00
+  
+  contactFunctions:
+    type: datasource.static
+    options:
+      data:
+        - id: 1
+          function: 11
+        - id: 2
+          function: 99
+          
+  department:
+    type: datasource.static
+    options:
+      data:
+        - id: 1
+          department: 0003
+
+children:
+  - type: component.form
+    instanceId: edit-contact
+    options:
+      children:
+        - type: component.avatar-field
+          instanceId: avatar
+          options:
+            label: Avatar
+        - type: component.text-field
+          instanceId: full_name
+          options:
+            label: Full name
+            initialValue: =@ctx.datasources.contacts.full_name
+        - type: component.number-field
+          instanceId: telephoneNumber
+          options:
+            label: Telephone number
+            initialValue: =@ctx.datasources.contacts.telephone
+        - type: component.number-field
+          instanceId: customer-id
+          options:
+            label: Customer ID
+            initialValue: =@ctx.datasources.contacts.customer-id
+        - type: component.dropdown
+          instanceId: department
+          options:
+            label: Department
+            data: =@ctx.datasources.department
+            initialValue: =@ctx.datasources.contacts.department
+            item:
+              type: component.dropdown-item
+              options:
+                title: =@ctx.current.item.department
+                value: =@ctx.current.item.department
+        - type: component.dropdown
+          instanceId: contact-function
+          options:
+            label: Contact function
+            data: =@ctx.datasources.contactFunctions
+            initialValue: =@ctx.datasources.contacts.contactFunction
+            item:
+              type: component.dropdown-item
+              options:
+                title: =@ctx.current.item.function
+                value: =@ctx.current.item.function
+        - type: component.field-row
+          options:
+            children:
+              - type: component.text-field
+                instanceId: morning-from
+                options:
+                  label: Morning from
+                  initialValue: =@ctx.datasources.contacts.morningFrom
+                  keyboardType: numbers-and-punctuation
+              - type: component.text-field
+                instanceId: morning-to
+                options:
+                  label: Morning to
+                  initialValue: =@ctx.datasources.contacts.morningTo
+                  keyboardType: numbers-and-punctuation
+        - type: component.field-row
+          options:
+            children:
+              - type: component.text-field
+                instanceId: afternoon-from
+                options:
+                  label: Afternoon from
+                  initialValue: =@ctx.datasources.contacts.afternoonFrom
+                  keyboardType: numbers-and-punctuation
+              - type: component.text-field
+                instanceId: afternoon-to
+                options:
+                  label: Afternoon to
+                  initialValue: =@ctx.datasources.contacts.afternoonTo
+                  keyboardType: numbers-and-punctuation

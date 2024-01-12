@@ -1,18 +1,74 @@
 title: Horeca
 type: jig.default
+datasources: 
+  synchronization: 
+    type: datasource.static
+    options:
+      data:
+        - id: 1
+          title: From the server
+          number: 20
+          update-time: Today at 08:01am
+          uploaded-data: 120
+          uploaded-data-y: 100
+          icon: cloud-smartphone-download
+          status: Complete
+        - id: 2
+          title: To the server
+          number: 48
+          update-time: Today at 08:01am
+          uploaded-data: 248
+          uploaded-data-y: 80
+          icon: cloud-smartphone-upload
+          status: In progress
+
+  menu-options:
+    type: datasource.static
+    options:
+      data:
+        - id: 1
+          color: color2
+          icon: pencil-write
+          linkTo: new-customer
+          subtitle: Create new customer
+          title: Create customer
+        - id: 2
+          color: secondary
+          icon: app-window-link
+          linkTo: application
+          subtitle: View Horeca app
+          title: Horeca app
+
+
 
 children:
-  - type: component.custom-component
-    componentId: logo
   - type: component.custom-component
     componentId: header-component
     inputs:
       avatar: https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
       name: John
   - type: component.custom-component
-    componentId: title
-    inputs:
-      title: Menu
+    componentId: search
   - type: component.custom-component
-    componentId: homehub-grid
+    componentId: section
+    inputs:
+      title: Synchronization
+  - type: component.list
+    options:
+      data: =@ctx.datasources.synchronization
+      maximumItemsToRender: 8
+      item: 
+        type: component.custom-component
+        componentId: synchronization
+        inputs:
+          sync: =@ctx.current.item
+  - type: component.list
+    options:
+      data: =@ctx.datasources.menu-options
+      maximumItemsToRender: 8
+      item:
+        type: component.custom-component
+        componentId: menu-options
+        inputs:
+          info: =@ctx.current.item
   

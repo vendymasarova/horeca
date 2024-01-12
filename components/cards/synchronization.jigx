@@ -1,69 +1,111 @@
 type: component.default
 children: 
-  - type: component.card
+  - type: component.view
     options:
+      style:
+        margin:
+          bottom: small
       children:
-        - type: component.view
+        - type: component.card
           options:
-            style:
-              flex:
-                direction: row
+            direction: column
             children:
               - type: component.view
                 options:
                   style:
-                    flex: 
-                      grow: 1
-                      basis: 1
-                      shrink: 1
+                    flex:
+                      direction: row
+                    alignItems: center
                   children:
                     - type: component.view
                       options:
                         style:
-                          flex:
-                            direction: row
-                          gap: small
+                          flex: 
+                            grow: 1
+                            basis: 1
+                            shrink: 1
                         children:
-                          - type: component.icon
+                          - type: component.view
                             options:
-                              icon: cloud-smartphone-download
-                          - type: component.text
+                              style:
+                                flex: 
+                                  grow: 1
+                                justifyContent: center
+                              children:
+                                - type: component.view
+                                  options:
+                                    style:
+                                      flex:
+                                        direction: row
+                                      gap: small
+                                      padding: 
+                                        bottom: small
+                                    children:
+                                      - type: component.icon
+                                        options:
+                                          icon: =@ctx.inputs.sync.icon
+                                          emphasis: medium
+                                      - type: component.text
+                                        options:
+                                          value: =@ctx.inputs.sync.title
+                                          size: medium
+                                          emphasis: medium
+                                - type: component.view
+                                  options:
+                                    style:
+                                      flex:
+                                        direction: row
+                                      gap: small
+                                      alignItems: center
+                                    children:
+                                      - type: component.icon
+                                        options:
+                                          icon: person
+                                          size: 16
+                                          color: primary
+                                      - type: component.text
+                                        options:
+                                          value: =@ctx.inputs.sync.number
+                                          size: large
+                                          color: primary
+                          - type: component.view
                             options:
-                              value: From the server
-                    - type: component.text
+                              style:
+                                flex:
+                                  grow: 1
+                                justifyContent: flex-end
+                              children:
+                                - type: component.text
+                                  options:
+                                    value: Last update
+                                    size: small
+                                    emphasis: high
+                                - type: component.text
+                                  options:
+                                    value: =@ctx.inputs.sync.update-time
+                                    size: small
+                                    emphasis: medium
+                    - type: component.view
                       options:
-                        value: 20
-                    - type: component.text
-                      options:
-                        value: customers
-                        size: tiny
-              - type: component.view
-                options:
-                  style:
-                    flex: 
-                      grow: 1
-                      basis: 1
-                      shrink: 1
-                  children:
-                    - type: component.pie-chart
-                      options:
-                        chart:
-                          title:
-                            text: 120 MB
-                            verticalAlign: center
-                          isAnimated: true
-                          # width: 125
-                          # height: 115
-                        series:
-                          - data: =[{"y":20, "color":"color4"}, {"y":80, "color":"color3"}]
-                            layout: pie
-                    - type: component.text
-                      options:
-                        value: Last update
-                        size: small
-                    - type: component.text
-                      options:
-                        value: Today at 8:52 am
-                        size: small
-                        emphasis: high
-                        
+                        style:
+                          flex: 
+                            grow: 1
+                            basis: 1
+                            shrink: 1
+                        children:
+                          - type: component.pie-chart
+                            options:
+                              chart:
+                                subtitle:
+                                  text: =@ctx.inputs.sync.status
+                                  verticalAlign: center 
+                                title:
+                                  text: =@ctx.inputs.sync.uploaded-data & ' MB'
+                                  verticalAlign: center
+                                isAnimated: true
+                                width: 100
+                              series:
+                                - data: =[{"y":@ctx.inputs.sync.uploaded-data-y, "color":@ctx.inputs.sync.uploaded-data-y = 100 ? 'positive':'color3'}, {"y":100 - @ctx.inputs.sync.uploaded-data-y, "color":"transparent"}]
+                                  layout: arch
+                          
+                              

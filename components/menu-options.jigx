@@ -1,0 +1,70 @@
+type: component.default
+children:
+  - type: component.view
+    options:
+      style:
+        padding:
+          vertical: minimal
+      children:
+        - type: component.card
+          options:
+            onPress:
+              type: action.action-list
+              options:
+                isSequential: true
+                actions:
+                  - type: action.go-to
+                    # Only Jo has access to Time Clock and Tim Card - remove this when ready
+                    when: =@ctx.inputs.info.linkTo != 'nav'
+                    options:
+                      linkTo: =@ctx.inputs.info.linkTo
+                      parameters:
+                        appointmentdata: =@ctx.inputs.appointmentdata
+                  - type: action.open-url
+                    when: =@ctx.inputs.info.linkTo = 'nav'
+                    options:
+                      url: =@ctx.inputs.url
+
+            children:
+              - type: component.view
+                options:
+                  style:
+                    flex:
+                      direction: row
+                    justifyContent: space-between
+                    padding:
+                      horizontal: minimal
+                  children:
+                    - type: component.view
+                      options:
+                        style:
+                          alignItems: center
+                          flex:
+                            direction: row
+                          gap: regular
+                        children:
+                          - type: component.icon
+                            options:
+                              color: =@ctx.inputs.info.color
+                              icon: =@ctx.inputs.info.icon
+                              shape: circle
+                              type: duotone
+                          - type: component.view
+                            options:
+                              style:
+                                gap: minimal
+                              children:
+                                - type: component.text
+                                  options:
+                                    value: =@ctx.inputs.info.title
+                                    weight: bold
+                                - type: component.text
+                                  when: =@ctx.inputs.info.subtitle != null
+                                  options:
+                                    emphasis: medium
+                                    size: small
+                                    value: =@ctx.inputs.info.subtitle
+                    - type: component.icon
+                      options:
+                        emphasis: medium
+                        icon: arrow-right

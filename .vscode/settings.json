@@ -1,3 +1,4 @@
 {
-    "jigx.isJigxUser": true
+    "jigx.isJigxUser": true,
+    "jigx.disablePublishWarning": true
 }

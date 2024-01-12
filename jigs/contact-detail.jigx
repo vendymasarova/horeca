@@ -1,16 +1,22 @@
 title: =@ctx.datasources.contacts.full_name
-description: Detailed contact information
 type: jig.default
+
+actions:
+  - children:
+      - type: action.go-to
+        options:
+          title: Edit contact
+          linkTo: edit-contact
 
 header:
   type: component.jig-header
   options:
-    height: medium
+    height: small
     children:
       type: component.image
       options:
         source:
-          uri: https://builder.jigx.com/assets/images/header.jpg
+          uri: https://t14345253.p.clickup-attachments.com/t14345253/a6c54f12-b0d7-426c-a06a-585cdac41274/contacts.png?view=open
 
 datasources:
   contacts:
@@ -45,6 +51,12 @@ children:
             value: =@ctx.datasources.contacts.full_name
         - type: component.entity-field
           options:
+            label: Telephone number
+            value: =@ctx.datasources.contacts.telephone
+            rightIcon: phone
+            contentType: phone
+        - type: component.entity-field
+          options:
             label: Customer ID
             value: =@ctx.datasources.contacts.customer-id
         - type: component.entity-field
@@ -55,19 +67,37 @@ children:
           options:
             label: Contact Function
             value: =@ctx.datasources.contacts.contactFunction
-        - type: component.entity-field
+        - type: component.field-row
           options:
-            label: Morning from
-            value: =@ctx.datasources.contacts.morningFrom
-        - type: component.entity-field
+            children:
+              - type: component.entity-field
+                options:
+                  label: Morning from
+                  value: =@ctx.datasources.contacts.morningFrom
+                  rightIcon: time-clock-circle
+                  contentType: time
+
+              - type: component.entity-field
+                options:
+                  label: Morning to
+                  value: =@ctx.datasources.contacts.morningTo
+                  rightIcon: time-clock-circle
+                  contentType: time
+                  
+        - type: component.field-row
           options:
-            label: Morning to
-            value: =@ctx.datasources.contacts.morningTo
-        - type: component.entity-field
-          options:
-            label: Afternoon from
-            value: =@ctx.datasources.contacts.afternoonFrom
-        - type: component.entity-field
-          options:
-            label: Afternoon to
-            value: =@ctx.datasources.contacts.afternoonTo
+            children:
+              - type: component.entity-field
+                options:
+                  label: Afternoon from
+                  value: =@ctx.datasources.contacts.afternoonFrom
+                  rightIcon: time-clock-circle
+                  contentType: time
+                  
+              - type: component.entity-field
+                options:
+                  label: Afternoon to
+                  value: =@ctx.datasources.contacts.afternoonTo
+                  rightIcon: time-clock-circle
+                  contentType: time
+                  

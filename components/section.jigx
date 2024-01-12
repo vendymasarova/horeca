@@ -1,0 +1,24 @@
+type: component.default
+ 
+children:
+- type: component.view
+  options:
+    style:
+      alignContent: space-between
+      alignItems: center
+      flex:
+        direction: row
+        grow: 1
+      justifyContent: space-between
+      margin:
+        top: small
+    children:
+      - type: component.text
+        options:
+          size: medium
+          emphasis: high
+          value: =@ctx.inputs.title
+          weight: bold
+
+
+        

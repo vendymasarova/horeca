@@ -1,5 +1,4 @@
 title: Synchronization
-description: Search customer
 type: jig.default
 icon: synchronize-arrow
 
@@ -10,10 +9,39 @@ actions:
           title: Start Synchronization
           state: =@ctx.solution.state.syncStatus
           value: true
+          
+datasources: 
+  synchronization: 
+    type: datasource.static
+    options:
+      data:
+        - id: 1
+          title: From the server
+          number: 20
+          update-time: Today at 08:01am
+          uploaded-data: 120
+          uploaded-data-y: 100
+          icon: cloud-smartphone-download
+          status: Complete
+        - id: 2
+          title: To the server
+          number: 48
+          update-time: Today at 08:01am
+          uploaded-data: 248
+          uploaded-data-y: 80
+          icon: cloud-smartphone-upload
+          status: In progress
 
-children:
-  - type: component.custom-component
-    componentId: synchronization
+children: 
+  - type: component.list
+    options:
+      data: =@ctx.datasources.synchronization
+      maximumItemsToRender: 8
+      item: 
+        type: component.custom-component
+        componentId: synchronization
+        inputs:
+          sync: =@ctx.current.item
     
 widgets:
   "2x4": 
@@ -33,7 +61,7 @@ widgets:
              type: component.titles
              options:
                icon: cloud-smartphone-download
-               iconColor: color2
+               iconColor: primary
                subtitle: from the server
        - type: widget.value
          options:

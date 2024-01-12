@@ -15,7 +15,7 @@ actions:
   - children:
       - type: action.go-to
         options:
-          title: Edit user data
+          title: Edit customer data
           linkTo: edit-customer
           parameters:
             userId: =@ctx.datasources.customer.id
@@ -26,14 +26,26 @@ datasources:
     options:
       data:
         - id: 2
+          HorecaID: 21
+          ParentHorecaId: 23
+          TaxID: 09239
           name: Jane Smith
           entityTypeCode: Payer
-          Street: 456 Oak Avenue
+          Street: Oak Avenue
+          StreetNumber: 447
           City: AnotherCity
-          CountryCode: CA
+          ZIPCode: 2300
+          CountryCode: SK
           StatusCode: Potentional
           IdentificationNumber: XYZ789
           SynchronizationStatus: not synchronized
+          TopCustomer: 0
+          SalesRepresentative: Mattoni
+          L4Code: C46 HCORE2 – HORECA
+          L4Name: JIP GROUP
+          Market: TRADITIONAL TRADE
+          QuestionnaireLastDate: 01.01.2024
+          ApprovalStarted: 0
           avatar: https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 
   contacts:
@@ -63,20 +75,84 @@ children:
       children:
         - type: component.entity-field
           options:
-            label: Name
+            label: Horeca ID
+            value: =@ctx.datasources.customer.HorecaID
+        - type: component.entity-field
+          options:
+            label: Parent customer ID
+            value: =@ctx.datasources.customer.ParentHorecaId
+        - type: component.entity-field
+          options:
+            label: Customer Name
             value: =@ctx.datasources.customer.name
         - type: component.entity-field
           options:
-            label: entity Type Code
+            label: Entity Type Code
             value: =@ctx.datasources.customer.entityTypeCode
+        - type: component.entity-field
+          options:
+            label: ID
+            value: =@ctx.datasources.customer.IdentificationNumber
+        - type: component.entity-field
+          options:
+            label: Tax identification number
+            value: =@ctx.datasources.customer.TaxID
+        - type: component.entity-field
+          options:
+            label: Street
+            value: =@ctx.datasources.customer.Street
+        - type: component.entity-field
+          options:
+            label: Street number
+            value: =@ctx.datasources.customer.StreetNumber
+        - type: component.entity-field
+          options:
+            label: City
+            value: =@ctx.datasources.customer.City
+        - type: component.entity-field
+          options:
+            label: Zip Code
+            value: =@ctx.datasources.customer.ZIPCode
+        - type: component.entity-field
+          options:
+            label: Country Code
+            value: =@ctx.datasources.customer.CountryCode
         - type: component.entity-field
           options:
             label: Status Code
             value: =@ctx.datasources.customer.StatusCode
         - type: component.entity-field
           options:
-            label: Identification Number
-            value: =@ctx.datasources.customer.IdentificationNumber
+            label: Top customer
+            value: =@ctx.datasources.customer.TopCustomer
+        - type: component.entity-field
+          options:
+            label: Sales representative
+            value: =@ctx.datasources.customer.SalesRepresentative
+        - type: component.entity-field
+          options:
+            label: L4Code
+            value: =@ctx.datasources.customer.L4Code
+        - type: component.entity-field
+          options:
+            label: L4Name
+            value: =@ctx.datasources.customer.L4Name
+        - type: component.entity-field
+          options:
+            label: Market
+            value: =@ctx.datasources.customer.Market
+        - type: component.entity-field
+          options:
+            label: Synchronization Status
+            value: =@ctx.datasources.customer.SynchronizationStatus
+        - type: component.entity-field
+          options:
+            label: Questionnaire Last Date
+            value: =@ctx.datasources.customer.QuestionnaireLastDate
+        - type: component.entity-field
+          options:
+            label: Approval Started
+            value: =@ctx.datasources.customer.ApprovalStarted
   - type: component.expander
     options:
       header:
@@ -85,7 +161,7 @@ children:
           options:
             title: Address
             icon: location
-            iconColor: color9
+            iconColor: primary
             align: left
       children:
         - type: component.location
@@ -108,6 +184,13 @@ children:
                   label: Country
                   value: =@ctx.datasources.customer.CountryCode
       isInitiallyCollapsed: false
+  
+  - type: component.custom-component
+    componentId: button
+    inputs:
+      title: New Questionnaire
+      subtitle: true
+      date: =@ctx.datasources.customer.QuestionnaireLastDate
   
   - type: component.custom-component
     componentId: title
@@ -135,7 +218,6 @@ children:
               type: action.open-url
               options:
                 url: ='tel:' & @ctx.current.item.telephone
-            
           isContained: true
           swipeable:
             right:
@@ -150,6 +232,8 @@ children:
             type: action.go-to
             options:
               linkTo: contact-detail
-        
-      
-
+  
+  - type: component.custom-component
+    componentId: button
+    inputs:
+      title: New contact

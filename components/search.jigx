@@ -1,0 +1,38 @@
+type: component.default
+children:
+  - type: component.card
+    options:
+      children:
+        - type: component.form
+          instanceId: search
+          options:
+            isDiscardChangesAlertEnabled: false
+            children:
+              - type: component.text-field
+                instanceId: searchSentense
+                options:
+                  label: 'Search customer'
+                  icon: search-1
+                  isRequired: false
+                  isOptionalLabelHidden: true
+                    
+        - type: component.button
+          options:
+            title: Search
+            type: primary
+            onPress:
+              type: action.action-list
+              options:
+                isSequential: true
+                actions:
+                  - type: action.set-state
+                    options:
+                      state: =@ctx.solution.state.loadingSearch
+                      value: 0
+                        
+                  - type: action.go-to
+                    options:
+                      linkTo: search
+                      parameters:
+                        searchText: =@ctx.components.searchSentense.state.value
+

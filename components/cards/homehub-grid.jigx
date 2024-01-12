@@ -55,7 +55,7 @@ children:
                                           icon: search-1
                                           shape: circle
                                           type: duotone
-                                          color: color2
+                                          color: primary
                                 - type: component.text
                                   options:
                                     value: Search customers
@@ -71,7 +71,7 @@ children:
                       shrink: 1
                       basis: 1
                     height: 
-                      min: 250
+                      min: 270
                   children:
                     - type: component.card
                       options:
@@ -105,7 +105,7 @@ children:
                                                 icon: synchronize-arrows-1
                                                 shape: circle
                                                 type: duotone
-                                                color: color2
+                                                color: primary
                                       - type: component.text
                                         options:
                                           value: Synchronization
@@ -136,14 +136,14 @@ children:
                                                   - type: component.icon
                                                     options:
                                                       icon: person
-                                                      color: color2
+                                                      color: primary
                                                   - type: component.text
                                                     options:
                                                       value: 20
                                             - type: component.icon
                                               options:
-                                                icon: cloud-smartphone-upload
-                                                color: color2
+                                                icon: cloud-smartphone-download
+                                                color: primary
                                       - type: component.view
                                         options:
                                           style:
@@ -162,14 +162,14 @@ children:
                                                   - type: component.icon
                                                     options:
                                                       icon: person
-                                                      color: color2
+                                                      color: primary
                                                   - type: component.text
                                                     options:
-                                                      value: 124
+                                                      value: 148
                                             - type: component.icon
                                               options:
-                                                icon: cloud-smartphone-download
-                                                color: color2
+                                                icon: cloud-smartphone-upload
+                                                color: primary
                                 - type: component.view
                                   options:
                                     style: {}
@@ -203,7 +203,7 @@ children:
                       shrink: 1
                       basis: 1
                     height:
-                      min: 250
+                      min: 270
                   children:
                     - type: component.card
                       options:
@@ -227,7 +227,7 @@ children:
                                   options:
                                     resizeMode: cover
                                     size: 
-                                      height: 250
+                                      height: 270
                                     source:
                                       uri: https://t14345253.p.clickup-attachments.com/t14345253/453a4bad-d1a1-4928-afe8-154836671f1a/new-customers.png?view=open
                           - type: component.view
@@ -250,7 +250,7 @@ children:
                                           icon: plus
                                           shape: circle
                                           type: duotone
-                                          color: color2
+                                          color: primary
                                 - type: component.text
                                   options:
                                     value: New customer
@@ -295,7 +295,7 @@ children:
                                           icon: app-window-link
                                           shape: circle
                                           type: duotone
-                                          color: color2
+                                          color: primary
                                 - type: component.text
                                   options:
                                     value: HORECA App

@@ -1,0 +1,41 @@
+type: component.default
+children:
+  - type: component.view
+    options:
+      style:
+        flex: 
+          # shrink: 1
+          direction: row
+        gap: small
+        alignItems: center
+        alignSelf: center
+        justifyContent: center
+        radius: large
+        background:
+          color: primary
+        padding: 
+          vertical: small
+          horizontal: large
+      children:
+        - type: component.view
+          options:
+            style:
+              justifyContent: flex-start
+            children:
+              - type: component.icon
+                options:
+                  icon: plus
+                  size: small
+        - type: component.view
+          options:
+            style:
+            children:
+              - type: component.text
+                options:
+                  value: =@ctx.inputs.title
+              - type: component.text
+                when: =@ctx.inputs.subtitle = true
+                options:
+                  value: ='Last update:' & ' ' & @ctx.inputs.date
+                  size: tiny
+                  emphasis: medium

@@ -1,33 +1,208 @@
-title: New customer
-description: Search customer
+title: Edit customer
 type: jig.default
-icon: plus
 
-header:
-  type: component.jig-header
-  options:
-    height: medium
-    children:
-      type: component.image
-      options:
-        source:
-          uri: https://builder.jigx.com/assets/images/header.jpg
+actions:
+  - children:
+      - type: action.go-back
+        options:
+          title: Save customer
+
+datasources:
+  customer: 
+    type: datasource.static
+    options:
+      data:
+        - id: 2
+          HorecaID: 21
+          ParentHorecaId: 23
+          TaxID: 09239
+          name: Jane Smith
+          entityTypeCode: Payer
+          Street: Oak Avenue
+          StreetNumber: 447
+          City: AnotherCity
+          ZIPCode: 2300
+          CountryCode: SK
+          StatusCode: Potentional
+          IdentificationNumber: XYZ789
+          SynchronizationStatus: not synchronized
+          TopCustomer: 0
+          SalesRepresentative: Mattoni
+          L4Code: C46 HCORE2 – HORECA
+          L4Name: JIP GROUP
+          Market: TRADITIONAL TRADE
+          QuestionnaireLastDate: 01.01.2024
+          ApprovalStarted: 0
+          avatar: https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+
+  entityTypeCode:
+    type: datasource.static
+    options:
+      data:
+        - id: 1
+          value: Payer
+        - id: 2
+          value: Ship-to
+        - id: 3
+          value: Sold-to
+          
+  countryCode:
+    type: datasource.static
+    options:
+      data:
+        - id: 1
+          value: CZ
+        - id: 2
+          value: SK
+        - id: 3
+          value: HU
 
 children:
-  - type: component.image
+  - type: component.form
+    instanceId: edit-customer
     options:
-      source:
-        uri: https://images.unsplash.com/photo-1704217394124-76efafcbc78d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  
-widgets:
-  "2x4": 
-    type: widget.image
-    options:
-      source:
-        uri: https://t14345253.p.clickup-attachments.com/t14345253/453a4bad-d1a1-4928-afe8-154836671f1a/new-customers.png?view=open
-      isContentOverlaid: true
-      top: 
-        type: component.titles
-        options:
-          icon: plus
-          title: New customer
+      children:
+        - type: component.avatar-field
+          instanceId: avatar
+          options:
+            label: Avatar
+            value: =@ctx.datasources.customer.avatar
+        - type: component.text-field
+          instanceId: SalesRepresentative
+          options:
+            label: Sales representative
+            initialValue: =@ctx.datasources.customer.SalesRepresentative
+        - type: component.dropdown
+          instanceId: countryCode
+          options:
+            label: Country code
+            data: =@ctx.datasources.countryCode
+            item:
+              type: component.dropdown-item
+              options:
+                title: =@ctx.current.item.value
+                value: =@ctx.current.item.value
+        - type: component.dropdown
+          instanceId: entityTypeCode
+          options:
+            label: entity Type Code
+            data: =@ctx.datasources.entityTypeCode
+            item:
+              type: component.dropdown-item
+              options:
+                title: =@ctx.current.item.value
+                value: =@ctx.current.item.value
+        - type: component.text-field
+          instanceId: name
+          options:
+            label: Name
+            initialValue: =@ctx.datasources.customer.name
+        - type: component.text-field
+          instanceId: statusCode
+          options:
+            label: Status code
+            value: =@ctx.datasources.customer.StatusCode
+        - type: component.text-field
+          instanceId: synchronizationStatus
+          options:
+            label: Synchronization status
+            initialValue: =@ctx.datasources.customer.SynchronizationStatus
+        - type: component.field-row
+          options:
+            children:
+              - type: component.text-field
+                instanceId: HorecaID
+                options:
+                  label: Horeca ID
+                  initialValue: =@ctx.datasources.customer.HorecaID
+              - type: component.number-field
+                instanceId: ParentCUstomerId
+                options:
+                  label: Parent customer ID
+                  initialValue: =@ctx.datasources.customer.ParentHorecaId
+        - type: component.field-row
+          options:
+            children:
+              - type: component.text-field
+                instanceId: id
+                options:
+                  label: Id
+                  initialValue: =@ctx.datasources.customer.IdentificationNumber
+              - type: component.text-field
+                instanceId: tax
+                options:
+                  label: Tax id
+                  initialValue: =@ctx.datasources.customer.TaxID
+        - type: component.field-row
+          options:
+            children:
+              - type: component.text-field
+                instanceId: street
+                options:
+                  label: Street
+                  initialValue: =@ctx.datasources.customer.Street
+              - type: component.text-field
+                instanceId: streetNumber
+                options:
+                  label: Street number
+                  initialValue: =@ctx.datasources.customer.StreetNumber
+        - type: component.field-row
+          options:
+            children:
+              - type: component.text-field
+                instanceId: city
+                options:
+                  label: City
+                  initialValue: =@ctx.datasources.customer.City
+              - type: component.text-field
+                instanceId: zip
+                options:
+                  label: Zip code
+                  initialValue: =@ctx.datasources.customer.ZIPCode
+        - type: component.field-row
+          options:
+            children:
+              - type: component.number-field
+                instanceId: TopCustomer
+                options:
+                  label: Top customer
+                  initialValue: =@ctx.datasources.customer.TopCustomer
+        - type: component.field-row
+          options:
+            children:
+              - type: component.text-field
+                instanceId: L4Code
+                options:
+                  label: L4Code
+                  initialValue: =@ctx.datasources.customer.L4Code
+              - type: component.text-field
+                instanceId: L4Name
+                options:
+                  label: L4Name
+                  initialValue: =@ctx.datasources.customer.L4Name
+        - type: component.text-field
+          instanceId: market
+          options:
+            label: Market
+            initialValue: =@ctx.datasources.customer.Market
+        - type: component.field-row
+          options:
+            children:
+              - type: component.text-field
+                instanceId: QuestionnaireLastDate
+                options:
+                  label: Questionnaire Last Date
+                  initialValue: =@ctx.datasources.customer.QuestionnaireLastDate
+              - type: component.text-field
+                instanceId: ApprovalStarted
+                options:
+                  label: Questionnaire Last Date
+                  initialValue: =@ctx.datasources.customer.ApprovalStarted
+
+  - type: component.custom-component
+    componentId: button
+    inputs:
+      title: New Questionnaire
+      subtitle: true
+      date: =@ctx.datasources.customer.QuestionnaireLastDate
+      
