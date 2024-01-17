@@ -1,0 +1,133 @@
+type: component.default
+children:
+  - type: component.card
+    options:
+      children:
+        - type: component.view
+          options:
+            style:
+              flex:
+                direction: row
+              gap: medium
+            children:
+              - type: component.view
+                options:
+                  style:
+                    flex: 
+                      grow: 1
+                      basis: 1
+                    alignItems: center
+                    gap: small
+                    justifyContent: center
+                  children:
+                    - type: component.view
+                      options:
+                        style:
+                          flex: 
+                            grow: 1
+                            basis: 1
+                            direction: row
+                          gap: small
+                        children:
+                          - type: component.location
+                            options:
+                              zoomLevel: 11
+                              address: 2 Oak Mount, Manningham, Bradford BD8 7BE, United Kingdom
+                    # - type: component.avatar
+                    #   options:
+                    #     title: =@ctx.inputs.avatar
+                    #     uri: https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+                    #     size: large
+                    #     align: center
+                    # - type: component.text
+                    #   options:
+                    #     # value: =@ctx.inputs.name
+                    #     size: medium
+                    #     value: Jane Smith
+              - type: component.view
+                options:
+                  style:
+                    flex: 
+                      grow: 1
+                      basis: 1
+                    gap: small
+                    justifyContent: center
+                    # width: 160
+                  children:
+                    - type: component.view
+                      options:
+                        style:
+                          flex:
+                            direction: column
+                        children:
+                          - type: component.text
+                            options:
+                              emphasis: medium
+                              value: Customer name
+                          - type: component.text
+                            options:
+                              value: Jane Smith
+                    - type: component.view
+                      options:
+                        style:
+                          flex:
+                            direction: column
+                        children:
+                          - type: component.text
+                            options:
+                              emphasis: medium
+                              value: Entity Type Code
+                          - type: component.text
+                            options:
+                              value: Payer
+                    - type: component.view
+                      options:
+                        style:
+                          flex:
+                            direction: column
+                        children:
+                          - type: component.text
+                            options:
+                              emphasis: medium
+                              value: Identification number
+                          - type: component.text
+                            options:
+                              value: XYZ789
+                    - type: component.view
+                      options:
+                        style:
+                          flex:
+                            direction: column
+                        children:
+                          - type: component.text
+                            options:
+                              emphasis: medium
+                              value: Address
+                          - type: component.text
+                            options:
+                              value: Oak Avenue 447, AnotherCity 2300, US
+                    - type: component.view
+                      options:
+                        style:
+                          flex:
+                            direction: column
+                        children:
+                          - type: component.text
+                            options:
+                              emphasis: medium
+                              value: Status
+                          - type: component.view
+                            options:
+                              style:
+                                background:
+                                  color: color3
+                                padding: 
+                                  horizontal: small
+                                  vertical: minimal
+                                alignSelf: flex-start
+                                radius: tiny
+                              children:
+                                - type: component.text
+                                  options:
+                                    value: Potentional
+          

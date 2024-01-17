@@ -1,4 +1,4 @@
-title: Edit customer
+title: New customer
 type: jig.default
 
 actions:
@@ -66,7 +66,6 @@ children:
           instanceId: avatar
           options:
             label: Avatar
-            value: =@ctx.datasources.customer.avatar
         - type: component.text-field
           instanceId: SalesRepresentative
           options:
@@ -92,34 +91,15 @@ children:
               options:
                 title: =@ctx.current.item.value
                 value: =@ctx.current.item.value
-        - type: component.text-field
-          instanceId: name
+        - type: component.number-field
+          instanceId: ParentCUstomerId
           options:
-            label: Name
-            initialValue: =@ctx.datasources.customer.name
+            label: Parent customer ID
         - type: component.text-field
           instanceId: statusCode
           options:
             label: Status code
-            value: =@ctx.datasources.customer.StatusCode
-        - type: component.text-field
-          instanceId: synchronizationStatus
-          options:
-            label: Synchronization status
-            initialValue: =@ctx.datasources.customer.SynchronizationStatus
-        - type: component.field-row
-          options:
-            children:
-              - type: component.text-field
-                instanceId: HorecaID
-                options:
-                  label: Horeca ID
-                  initialValue: =@ctx.datasources.customer.HorecaID
-              - type: component.number-field
-                instanceId: ParentCUstomerId
-                options:
-                  label: Parent customer ID
-                  initialValue: =@ctx.datasources.customer.ParentHorecaId
+            initialValue: Potentional
         - type: component.field-row
           options:
             children:
@@ -127,12 +107,14 @@ children:
                 instanceId: id
                 options:
                   label: Id
-                  initialValue: =@ctx.datasources.customer.IdentificationNumber
               - type: component.text-field
                 instanceId: tax
                 options:
                   label: Tax id
-                  initialValue: =@ctx.datasources.customer.TaxID
+        - type: component.text-field
+          instanceId: name
+          options:
+            label: Name
         - type: component.field-row
           options:
             children:
@@ -140,12 +122,10 @@ children:
                 instanceId: street
                 options:
                   label: Street
-                  initialValue: =@ctx.datasources.customer.Street
               - type: component.text-field
                 instanceId: streetNumber
                 options:
                   label: Street number
-                  initialValue: =@ctx.datasources.customer.StreetNumber
         - type: component.field-row
           options:
             children:
@@ -153,56 +133,10 @@ children:
                 instanceId: city
                 options:
                   label: City
-                  initialValue: =@ctx.datasources.customer.City
               - type: component.text-field
                 instanceId: zip
                 options:
                   label: Zip code
-                  initialValue: =@ctx.datasources.customer.ZIPCode
-        - type: component.field-row
-          options:
-            children:
-              - type: component.number-field
-                instanceId: TopCustomer
-                options:
-                  label: Top customer
-                  initialValue: =@ctx.datasources.customer.TopCustomer
-        - type: component.field-row
-          options:
-            children:
-              - type: component.text-field
-                instanceId: L4Code
-                options:
-                  label: L4Code
-                  initialValue: =@ctx.datasources.customer.L4Code
-              - type: component.text-field
-                instanceId: L4Name
-                options:
-                  label: L4Name
-                  initialValue: =@ctx.datasources.customer.L4Name
-        - type: component.text-field
-          instanceId: market
-          options:
-            label: Market
-            initialValue: =@ctx.datasources.customer.Market
-        - type: component.field-row
-          options:
-            children:
-              - type: component.text-field
-                instanceId: QuestionnaireLastDate
-                options:
-                  label: Questionnaire Last Date
-                  initialValue: =@ctx.datasources.customer.QuestionnaireLastDate
-              - type: component.text-field
-                instanceId: ApprovalStarted
-                options:
-                  label: Questionnaire Last Date
-                  initialValue: =@ctx.datasources.customer.ApprovalStarted
+        
 
-  - type: component.custom-component
-    componentId: button
-    inputs:
-      title: New Questionnaire
-      subtitle: true
-      date: =@ctx.datasources.customer.QuestionnaireLastDate
       

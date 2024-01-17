@@ -26,20 +26,36 @@ datasources:
     type: datasource.static
     options:
       data:
+        - id: 0
+          color: secondary
+          icon: person
+          linkTo: search
+          subtitle: List of customers
+          title: Customers
         - id: 1
-          color: color2
+          color: secondary
           icon: pencil-write
           linkTo: new-customer
           subtitle: Create new customer
-          title: Create customer
+          title: New customer
         - id: 2
+          color: secondary
+          icon: task-list-star
+          linkTo: questionnaire
+          subtitle: Create new questionnaire
+          title: New questionnaire
+        - id: 3
+          color: secondary
+          icon: synchronize-arrows-1
+          linkTo: synchronization
+          subtitle: View synchronization status
+          title: Synchronization
+        - id: 4
           color: secondary
           icon: app-window-link
           linkTo: application
           subtitle: View Horeca app
           title: Horeca app
-
-
 
 children:
   - type: component.custom-component
@@ -50,18 +66,7 @@ children:
   - type: component.custom-component
     componentId: search
   - type: component.custom-component
-    componentId: section
-    inputs:
-      title: Synchronization
-  - type: component.list
-    options:
-      data: =@ctx.datasources.synchronization
-      maximumItemsToRender: 8
-      item: 
-        type: component.custom-component
-        componentId: synchronization
-        inputs:
-          sync: =@ctx.current.item
+    componentId: active-user
   - type: component.list
     options:
       data: =@ctx.datasources.menu-options
